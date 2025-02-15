@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .tabs {
+      display: flex;
+      background-color: #333;
+    }
+    .tab {
+      flex: 1;
+      padding: 14px 16px;
+      cursor: pointer;
+      color: #fff;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+    .tab:hover {
+      background-color: #575757;
+    }
+    .active {
+      background-color: #575757;
+    }
+    .content {
+      display: none;
+      padding: 20px;
+    }
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" data-tab="resume">Resume</div>
+    <div class="tab" data-tab="research">Research</div>
+    <div class="tab" data-tab="blog">Blog</div>
+  </div>
+
+  <div id="resume" class="content active">
+    <h2>Resume</h2>
+    <p>This is the resume section. Add your resume details here.</p>
+  </div>
+  <div id="research" class="content">
+    <h2>Research</h2>
+    <p>This is the research section. Add your research work details here.</p>
+  </div>
+  <div id="blog" class="content">
+    <h2>Blog</h2>
+    <p>This is the blog section. Write your blog posts here.</p>
+  </div>
+
+  <script>
+    // Get all tab elements and content sections
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    // Add click event listener to each tab
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+
+        // Remove 'active' class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add 'active' class to the clicked tab and the corresponding content
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
